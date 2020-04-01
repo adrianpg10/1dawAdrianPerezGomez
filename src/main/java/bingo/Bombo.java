@@ -39,6 +39,16 @@ public class Bombo {
         return numeroBolas;
     }
 
+    //Metodo llenarBombo Recorremos el array y lo rellenamos de numeros del 1-90 hasta el tamaño del array
+    public void llenarBombo() {
+        for (int i = 0; i < bolas.length; i++) {
+
+            bolas[i] = i + 1;
+
+        }
+
+    }
+
     //ToString
     @Override
     public String toString() {
