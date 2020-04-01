@@ -80,7 +80,7 @@ public class Bombo {
         int contadorBolasFinal = bolas.length - contadorBolasVacias;
         return contadorBolasFinal;
     }
-    
+
     //Metodo para imprimir el array.
     public void imprimirBombo() {
 
@@ -94,5 +94,19 @@ public class Bombo {
     public String toString() {
         return "Bombo{" + "bolas=" + bolas + ", numeroBolas=" + numeroBolas + '}';
     }
+
+//    public static void main(String[] args) {
+//
+//        Bombo j = new Bombo();
+//
+//        j.imprimirBombo();
+//        j.llenarBombo();
+//        j.imprimirBombo();
+//        j.sacarBola();
+//        j.imprimirBombo();
+//        j.sacarBola();
+//        j.imprimirBombo();
+//        System.out.println(j.saberNumeroBolas());
+//    }
 
 }
