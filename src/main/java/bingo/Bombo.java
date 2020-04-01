@@ -64,6 +64,23 @@ public class Bombo {
 
     }
 
+    // Metodo saberNumeroBolas, devolveremos un entero
+    // Recorremos el array y creamos un contador
+    // Si el numero de la posicion[i] es igual a 0
+    // entonces sumaremos 1 al contador
+    public int saberNumeroBolas() {
+        int contadorBolasVacias = 0;
+        for (int i = 0; i < bolas.length; i++) {
+            if (bolas[i] == 0) {
+                contadorBolasVacias++;
+            }
+        }
+        // Cuando termine el bucle for, haremos una resta entre el tamaño del array y el contador de las bolas vacias
+        // el resultado serán las bolas restantes del bombo
+        int contadorBolasFinal = bolas.length - contadorBolasVacias;
+        return contadorBolasFinal;
+    }
+
     //ToString
     @Override
     public String toString() {
