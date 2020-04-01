@@ -49,6 +49,21 @@ public class Bombo {
 
     }
 
+    // Metodo sacarBobla, Sacaremos una bola aleatoriamente, mientras existan bolas dentro.
+    // es decir, si el array no es null y es mayor que 0
+    public void sacarBola() {
+        Random aleatorio = new Random();
+        //Creamos una variable bolaAleatoria del 1 al 90
+        int bolaAleatoria = aleatorio.nextInt(90) + 1;
+        if (bolas != null && bolas.length > 0) {
+            for (int i = 0; i < bolas.length; i++) {
+                // Reemplazamos el numero que corresponde a la posicion de la variable aleatoria por un 0
+                bolas[bolaAleatoria] = 0;
+            }
+        }
+
+    }
+
     //ToString
     @Override
     public String toString() {
