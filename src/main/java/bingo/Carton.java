@@ -46,6 +46,19 @@ public class Carton {
         }
     }
     
+    // Metodo mostrarCarton, donde recorremos la matriz y la imprimimos
+
+    public void mostrarCarton() {
+
+        for (int i = 0; i < cartones.length; i++) {
+            System.out.print("|");
+            for (int j = 0; j < cartones[i].length; j++) {
+                System.out.print(cartones[i][j] + "|");
+            }
+            System.out.println("");
+        }
+    }
+    
     
     
 //ToString
