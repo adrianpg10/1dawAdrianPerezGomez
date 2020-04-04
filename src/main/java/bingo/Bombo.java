@@ -5,6 +5,7 @@
  */
 package bingo;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -13,81 +14,27 @@ import java.util.Random;
  */
 public class Bombo {
     //Añadimos los atributos correspondientes
-    //Creamos un array de bolas
+    //Creamos una lista de bolas
 
-    private int[] bolas;
+    private ArrayList<Integer> bolas;
     //Añadimos el atributo numeroBolas y lo pondremos final para que no pueda ser modificado, ya que siempre va a ser el mismo
     // Si quisiesemos cambiar el numero de bolas, tendriamos que modificar el atributo
     private final int numeroBolas = 90;
 
-    //Creamos un constructor donde rellenaremos el array con el tamaño del atributo numero de bolas 
+    //Creamos un constructor donde rellenaremos la lista con el tamaño del atributo numero de bolas 
     public Bombo() {
-        this.bolas = new int[numeroBolas];
-
+        this.bolas = new ArrayList<>(numeroBolas);
     }
     //Getters y Setters
 
-    public int[] getBolas() {
+    public ArrayList<Integer> getBolas() {
         return bolas;
     }
 
-    public void setBolas(int[] bolas) {
+    public void setBolas(ArrayList<Integer> bolas) {
         this.bolas = bolas;
     }
 
-    public int getNumeroBolas() {
-        return numeroBolas;
-    }
-
-    //Metodo llenarBombo Recorremos el array y lo rellenamos de numeros del 1-90 hasta el tamaño del array
-    public void llenarBombo() {
-        for (int i = 0; i < bolas.length; i++) {
-
-            bolas[i] = i + 1;
-
-        }
-
-    }
-
-    // Metodo sacarBobla, Sacaremos una bola aleatoriamente, mientras existan bolas dentro.
-    // es decir, si el array no es null y es mayor que 0
-    public void sacarBola() {
-        Random aleatorio = new Random();
-        //Creamos una variable bolaAleatoria del 1 al 90
-        int bolaAleatoria = aleatorio.nextInt(90) + 1;
-        if (bolas != null && bolas.length > 0) {
-            for (int i = 0; i < bolas.length; i++) {
-                // Reemplazamos el numero que corresponde a la posicion de la variable aleatoria por un 0
-                bolas[bolaAleatoria] = 0;
-            }
-        }
-
-    }
-
-    // Metodo saberNumeroBolas, devolveremos un entero
-    // Recorremos el array y creamos un contador
-    // Si el numero de la posicion[i] es igual a 0
-    // entonces sumaremos 1 al contador
-    public int saberNumeroBolas() {
-        int contadorBolasVacias = 0;
-        for (int i = 0; i < bolas.length; i++) {
-            if (bolas[i] == 0) {
-                contadorBolasVacias++;
-            }
-        }
-        // Cuando termine el bucle for, haremos una resta entre el tamaño del array y el contador de las bolas vacias
-        // el resultado serán las bolas restantes del bombo
-        int contadorBolasFinal = bolas.length - contadorBolasVacias;
-        return contadorBolasFinal;
-    }
-
-    //Metodo para imprimir el array.
-    public void imprimirBombo() {
-
-        for (int bola : bolas) {
-            System.out.println(bola);
-        }
-    }
 
     //ToString
     @Override
@@ -99,14 +46,20 @@ public class Bombo {
 //
 //        Bombo j = new Bombo();
 //
-//        j.imprimirBombo();
+//        //  j.imprimirBombo();
 //        j.llenarBombo();
+////        j.imprimirBombo();
+////        j.sacarBola();
+////        j.imprimirBombo();
+////        j.sacarBola();
+////        j.imprimirBombo();
+////        System.out.println(j.saberNumeroBolas());
+//        for (int i = 0; i < 89; i++) {
+//            j.sacarBola();
+//        }
+//
 //        j.imprimirBombo();
-//        j.sacarBola();
-//        j.imprimirBombo();
-//        j.sacarBola();
-//        j.imprimirBombo();
+//        
 //        System.out.println(j.saberNumeroBolas());
 //    }
-
 }
