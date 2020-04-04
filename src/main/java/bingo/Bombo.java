@@ -41,6 +41,16 @@ public class Bombo {
     public String toString() {
         return "Bombo{" + "bolas=" + bolas + ", numeroBolas=" + numeroBolas + '}';
     }
+    
+    //Metodo llenarBombo Recorremos el ArrayList, creamos un for con 90 iteraciones donde añadiremos numeros del 1 al 90
+    public void llenarBombo() {
+        for (int i = 0; i < 90; i++) {
+            bolas.add(i + 1);
+        }
+
+    }
+
+    
 
 //    public static void main(String[] args) {
 //
