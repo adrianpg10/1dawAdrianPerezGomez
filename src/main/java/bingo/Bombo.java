@@ -94,7 +94,16 @@ public class Bombo {
         return contadorBolasFinal;
     }
     
-    
+      //Metodo para imprimir la lista.
+    public void imprimirBombo() {
+
+        for (Integer bola : bolas) {
+            System.out.println(bola);
+        }
+    } 
+   
+   
+   
 
 //    public static void main(String[] args) {
 //
