@@ -309,6 +309,36 @@ public class Carton {
         }
 
     }
+    
+    //Metodo comprobarSiLinea, devolverá true si ha encontrado linea o false si no
+    public boolean comprobarSiLinea() {
+        //Creamos 3 contadores
+        int contadorXlinea1 = 0;
+        int contadorXlinea2 = 0;
+        int contadorXlinea3 = 0;
+
+        //Recorremos el arrayBlanco
+        for (int i = 0; i < arrayBlanco.length; i++) {
+            for (int j = 0; j < arrayBlanco[i].length; j++) {
+                //Si en la fila 0 hay una x le añadimos 1 al contador
+                if (arrayBlanco[0][j].equals("X")) {
+                    contadorXlinea1++;
+                }
+                //Si en la fila 1 hay una x le añadimos 1 al contador
+                if (arrayBlanco[1][j].equals("X")) {
+                    contadorXlinea2++;
+                }
+                //Si en la fila 2 hay una x le añadimos 1 al contador
+                if (arrayBlanco[2][j].equals("X")) {
+                    contadorXlinea3++;
+                }
+            }
+        }
+        //Devuelve true si algunos de los contadores es 5 (cantaría linea)
+        return contadorXlinea1 == 5 || contadorXlinea2 == 5 || contadorXlinea3 == 5;
+
+    }
+    
 
   //  Metodo main
 //    public static void main(String[] args) {
