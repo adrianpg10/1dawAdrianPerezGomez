@@ -22,7 +22,7 @@ public class Carton {
 
     public Carton() {
         this.cartones = new String[3][9];
-        this.bolas = bolas;
+        generarCarton();
     }
 
     //Metodo rellenarCarton
@@ -61,7 +61,7 @@ public class Carton {
 
     // Metodo generarCarton, donde ordena los numeros para que no se repitan y 
     // Si una columna guarda un número X, no puede haber números superiores a X en esa misma columna en filas inferiores. 
-    public void generarCarton() {
+    private void generarCarton() {
         Random aleatorio = new Random();
 
         //Llamamos al metodo rellenarCarton
@@ -368,18 +368,18 @@ public class Carton {
 
     }
 
-    //  Metodo main
-//    public static void main(String[] args) {
-//
-//        Carton a = new Carton();
-//
-//        // a.mostrarCarton();
-//        a.generarCarton();
-//        a.mostrarCarton();
-//
-//        a.tacharCasilla(5);
-//        System.out.println(a.comprobarSiLinea());
-//        System.out.println(a.comprobarBingo());
-//
-//    }
+    // Metodo main
+    public static void main(String[] args) {
+
+        Carton a = new Carton();
+
+        // a.mostrarCarton();
+        a.generarCarton();
+        a.mostrarCarton();
+
+        a.tacharCasilla(5);
+        System.out.println(a.comprobarSiLinea());
+        System.out.println(a.comprobarBingo());
+
+    }
 }

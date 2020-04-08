@@ -24,6 +24,7 @@ public class Bombo {
     //Creamos un constructor donde rellenaremos la lista con el tamaño del atributo numero de bolas 
     public Bombo() {
         this.bolas = new ArrayList<>(numeroBolas);
+        llenarBombo();
     }
     //Getters y Setters
 
@@ -35,22 +36,21 @@ public class Bombo {
         this.bolas = bolas;
     }
 
-
     //ToString
     @Override
     public String toString() {
         return "Bombo{" + "bolas=" + bolas + ", numeroBolas=" + numeroBolas + '}';
     }
-    
+
     //Metodo llenarBombo Recorremos el ArrayList, creamos un for con 90 iteraciones donde añadiremos numeros del 1 al 90
-    public void llenarBombo() {
+    private void llenarBombo() {
         for (int i = 0; i < 90; i++) {
             bolas.add(i + 1);
         }
 
     }
 
-     // Metodo sacarBobla, Sacaremos una bola aleatoriamente, mientras el arraylist no esté vacio
+    // Metodo sacarBobla, Sacaremos una bola aleatoriamente, mientras el arraylist no esté vacio
     public int sacarBola() {
 
         Random aleatorio = new Random();
@@ -74,14 +74,14 @@ public class Bombo {
         }
 
     }
-    
-     // Metodo saberNumeroBolas, devolveremos un entero
+
+    // Metodo saberNumeroBolas, devolveremos un entero
     // Recorremos el array y creamos un contador
     // Si el numero de la posicion[i] es igual a 0
     // entonces sumaremos 1 al contador
-   public int saberNumeroBolas() {
+    public int saberNumeroBolas() {
         int contadorBolasVacias = 0;
-        
+
         for (int i = 0; i < bolas.size(); i++) {
             // Recorremos el bucle for, si el contenido de la posición es 0 el contador suma 1
             if (bolas.get(i) == 0) {
@@ -93,17 +93,14 @@ public class Bombo {
         int contadorBolasFinal = bolas.size() - contadorBolasVacias;
         return contadorBolasFinal;
     }
-    
-      //Metodo para imprimir la lista.
+
+    //Metodo para imprimir la lista.
     public void imprimirBombo() {
 
         for (Integer bola : bolas) {
             System.out.println(bola);
         }
-    } 
-   
-   
-   
+    }
 
 //    public static void main(String[] args) {
 //
@@ -117,7 +114,7 @@ public class Bombo {
 ////        j.sacarBola();
 ////        j.imprimirBombo();
 ////        System.out.println(j.saberNumeroBolas());
-//        for (int i = 0; i < 89; i++) {
+//        for (int i = 0; i < 90; i++) {
 //            j.sacarBola();
 //        }
 //
