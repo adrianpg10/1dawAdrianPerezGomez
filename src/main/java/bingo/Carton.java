@@ -23,6 +23,7 @@ public class Carton {
     public Carton() {
         this.cartones = new String[3][9];
         generarCarton();
+        rellenarArrayBlanco();
     }
 
     //Metodo rellenarCarton
@@ -280,15 +281,20 @@ public class Carton {
 //Creamos un array con el mismo tamaño que el original (cartones)
     private String[][] arrayBlanco = new String[3][9];
 
-//Metodo tacharCasilla, si el numero indicado es igual que el numero del carton
-    // escribiremos una X al nuevo arrayBlanco creado anteriormente
-    public void tacharCasilla(int numero) {
+    private void rellenarArrayBlanco() {
         //Rellenamos todo el array (arrayBlanco) con blancos 
         for (int i = 0; i < arrayBlanco.length; i++) {
             for (int j = 0; j < arrayBlanco[i].length; j++) {
                 arrayBlanco[i][j] = " ";
             }
         }
+
+    }
+
+//Metodo tacharCasilla, si el numero indicado es igual que el numero del carton
+    // escribiremos una X al nuevo arrayBlanco creado anteriormente
+    public void tacharCasilla(int numero) {
+
         //Recorremos el array original (cartones)
         for (int i = 0; i < cartones.length; i++) {
             for (int j = 0; j < cartones[i].length; j++) {
