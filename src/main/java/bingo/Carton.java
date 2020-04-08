@@ -277,7 +277,38 @@ public class Carton {
 
     }
 
+//Creamos un array con el mismo tamaño que el original (cartones)
+    private String[][] arrayBlanco = new String[3][9];
 
+//Metodo tacharCasilla, si el numero indicado es igual que el numero del carton
+    // escribiremos una X al nuevo arrayBlanco creado anteriormente
+    public void tacharCasilla(int numero) {
+        //Rellenamos todo el array (arrayBlanco) con blancos 
+        for (int i = 0; i < arrayBlanco.length; i++) {
+            for (int j = 0; j < arrayBlanco[i].length; j++) {
+                arrayBlanco[i][j] = " ";
+            }
+        }
+        //Recorremos el array original (cartones)
+        for (int i = 0; i < cartones.length; i++) {
+            for (int j = 0; j < cartones[i].length; j++) {
+                //Si el numero es igual que algun numero de la posicion del arrayCartones
+                // Le pondremos una X al arrayBlanco en la misma posicion que el arrayOriginal(cartones)
+                if (String.valueOf(numero).equals(cartones[i][j])) {
+                    arrayBlanco[i][j] = "X";
+                }
+            }
+        }
+        //Imprimimos el arrayBlanco donde aparecerán las x o no dependiendo si el numero coincide
+        System.out.println("----CARTÓN PARA TACHAR----");
+        for (int i = 0; i < arrayBlanco.length; i++) {
+            for (int j = 0; j < arrayBlanco[i].length; j++) {
+                System.out.print("[" + arrayBlanco[i][j] + "]");
+            }
+            System.out.println("");
+        }
+
+    }
 
   //  Metodo main
 //    public static void main(String[] args) {
