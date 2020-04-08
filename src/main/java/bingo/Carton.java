@@ -50,12 +50,13 @@ public class Carton {
     public void mostrarCarton() {
 
         for (int i = 0; i < cartones.length; i++) {
-            System.out.print("|");
+
             for (int j = 0; j < cartones[i].length; j++) {
-                System.out.print(cartones[i][j] + "|");
+                System.out.print("[" + cartones[i][j] + "]");
             }
             System.out.println("");
         }
+
     }
 
     // Metodo generarCarton, donde ordena los numeros para que no se repitan y 
@@ -142,8 +143,9 @@ public class Carton {
                 cartones[i][8] = String.valueOf(aleatorio.nextInt(90 - 80 + 1) + 80);
             }
         }
+
         // Llamada al metodo generarBlancos
-        // generarBlancos();
+        generarBlancos();
 
     }
 
@@ -152,5 +154,143 @@ public class Carton {
     public String toString() {
         return "Carton{" + "cartones=" + cartones + '}';
     }
+//Creamos un array nuevo con el contenido del original sin blancos
+    private String[][] clon = new String[3][9];
 
+//Metodo generarBlancos, metodo privado donde generaremos 4 blancos por cada fila del array
+    private void generarBlancos() {
+        Random aleatorio = new Random();
+        //Rellenamos el array clonado con los numeros del array original
+        for (int i = 0; i < cartones.length; i++) {
+            for (int j = 0; j < cartones[i].length; j++) {
+                clon[i][j] = cartones[i][j];
+            }
+        }
+        //Variable(numeroNuevo1) donde almacenamos el valor de numeroAleatorio1
+        int numeroNuevo1 = 0;
+        int numeroAleatorio1 = 0;
+        //Variable(numeroAleatorio1) donde almacenamos el valor de numeroAleatorio2
+        int numeroNuevo2 = 0;
+        int numeroAleatorio2 = 0;
+        //Bucle for que se realizará 4 veces
+        for (int i = 0; i < 4; i++) {
+            //Guardamos en la variable(numeroNuevo) la variable numeroaleatorio
+            numeroNuevo1 = numeroAleatorio1;
+            //Generamos un numero aleatoriio del 0 al 9(las filas del array)
+            numeroAleatorio1 = aleatorio.nextInt(9);
+            //Bucle while para que mientras que numero aleatorio sea igual a numeronuevo 
+            // genere un nuevo numero aleatorio
+            // Este bucle sirve para que no se repitan las posiciones aleatorias y pueda generar 4 blancos en diferentes posiciones del array
+            while (cartones[0][numeroAleatorio1].equals(cartones[0][numeroNuevo1])) {
+
+                numeroAleatorio1 = aleatorio.nextInt(9);
+            }
+            //Añadimos un " " en la posicion aleatoria
+            cartones[0][numeroAleatorio1] = " ";
+
+        }
+//Mismo for que el primero
+        for (int i = 0; i < 4; i++) {
+
+            numeroNuevo2 = numeroAleatorio2;
+            numeroAleatorio2 = aleatorio.nextInt(9);
+            //Mismo bucle que el primero
+            while (cartones[1][numeroAleatorio2].equals(cartones[1][numeroNuevo2])) {
+                numeroAleatorio2 = aleatorio.nextInt(9);
+            }
+            //Condicion de que si la posicion de la fila 1 está vacia/blanca 
+            // y la posicion de la fila 1 es igual que la posicion de la fila 0
+            // entonces genere un nuevo numero aleatorio para que se genere un blanco en otra posicion
+
+            if (cartones[1][numeroAleatorio2].equals(" ") && cartones[1][numeroAleatorio2].equals(cartones[0][numeroAleatorio1])) {
+
+                numeroAleatorio2 = aleatorio.nextInt(9);
+                cartones[1][numeroAleatorio2] = " ";
+                //Si no pasa esto, entonces se queda con el numero anteriormente generado
+            } else {
+                cartones[1][numeroAleatorio2] = " ";
+            }
+
+        }
+        //Contador de blancos
+        int contadorblancos = 0;
+
+        //Recorremos el array carton
+        for (int i = 0; i < cartones.length; i++) {
+            for (int j = 0; j < cartones[i].length; j++) {
+                // si la fila 0 de la posicion j y la fila 1 de la posicion j es blanco
+                // entonces rellenamos esa posicion con la posicion del array previamente clonado
+                if (cartones[0][j].equals(" ") && cartones[1][j].equals(" ")) {
+                    cartones[2][j] = clon[2][j];
+
+                }
+
+            }
+        }
+        //Recorremos el array cartones
+        for (int z = 0; z < cartones.length; z++) {
+            for (int k = 0; k < cartones[z].length; k++) {
+                // Si en la fila 1 es un numero y la fila 0 es un numero, pondremos un blanco
+                if (!(cartones[1][k].equals(" ")) && !(cartones[0][k].equals(" "))) {
+                    cartones[2][k] = " ";
+
+                }
+
+            }
+
+        }
+
+// Contador de blancos de la 3 fila     
+        for (int i = 0; i < cartones.length; i++) {
+            for (int j = 0; j < cartones[i].length; j++) {
+                switch (i) {
+                    case 2:
+                        if (cartones[2][j].equals(" ")) {
+                            contadorblancos++;
+                        }
+
+                        break;
+                }
+            }
+        }
+
+        //Nuevo contador donde le pondremos 4 porque son los 4 blancos que debe haber en la fila
+        int contador = 4;
+
+        //Recorremos el array carton 
+        for (int i = 0; i < cartones.length; i++) {
+            for (int j = 0; j < cartones[i].length; j++) {
+
+                // Si la fila 0 es un numero y la fila 1 es blanco o la fila 1 es un numero y la fila 0 es un blanco
+                // y además si contadorblancos (que cuenta los blancos (switch creado anteriormente) es menor que contador)
+                // entonces le añadimos un blanco a la posicion indicada
+                // y le sumamos 1 al contadordeblancos 
+                // este bucle acaba hasta que contadorblancos sea 4
+                if ((!(cartones[0][j].equals(" ")) && cartones[1][j].equals(" ")
+                        || !(cartones[1][j].equals(" ")) && cartones[0][j].equals(" ")) && contadorblancos < contador) {
+                    cartones[2][j] = " ";
+                    contadorblancos++;
+                }
+
+            }
+        }
+
+    }
+
+
+
+  //  Metodo main
+//    public static void main(String[] args) {
+//
+//        Carton a = new Carton();
+//
+//        // a.mostrarCarton();
+//        a.generarCarton();
+//        a.mostrarCarton();
+//
+//        a.tacharCasilla(5);
+//        System.out.println(a.comprobarSiLinea());
+//        System.out.println(a.comprobarBingo());
+//
+//    }
 }
