@@ -53,7 +53,13 @@ public class Carton {
         for (int i = 0; i < cartones.length; i++) {
 
             for (int j = 0; j < cartones[i].length; j++) {
-                System.out.print("[" + cartones[i][j] + "]");
+                int tamanyo = cartones[i][j].length();
+                if (tamanyo == 1) {
+                    System.out.print("[" + cartones[i][j] + " ]");
+                } else {
+
+                    System.out.print("[" + cartones[i][j] + "]");
+                }
             }
             System.out.println("");
         }
@@ -324,7 +330,6 @@ public class Carton {
         int contadorXlinea3 = 0;
 
         //Recorremos el arrayBlanco
-
         for (int i = 0; i < arrayBlanco.length; i++) {
             for (int j = 0; j < arrayBlanco[i].length; j++) {
                 //Creamos un switch dependiendo de la fila
@@ -404,17 +409,17 @@ public class Carton {
     }
 
     // Metodo main
-    public static void main(String[] args) {
-
-        Carton a = new Carton();
-
-        // a.mostrarCarton();
-        a.generarCarton();
-        a.mostrarCarton();
-
-        a.tacharCasilla(5);
-        System.out.println(a.comprobarSiLinea());
-        System.out.println(a.comprobarBingo());
-
-    }
+//    public static void main(String[] args) {
+//
+//        Carton a = new Carton();
+//
+//        // a.mostrarCarton();
+//        a.generarCarton();
+//        a.mostrarCarton();
+//
+//        a.tacharCasilla(5);
+//        System.out.println(a.comprobarSiLinea());
+//        System.out.println(a.comprobarBingo());
+//
+//    }
 }
