@@ -49,11 +49,14 @@ public class Carton {
 
     // Metodo mostrarCarton, donde recorremos la matriz y la imprimimos
     public void mostrarCarton() {
-
+        
         for (int i = 0; i < cartones.length; i++) {
 
             for (int j = 0; j < cartones[i].length; j++) {
+                //Creamos una variable tamanyo para sacar el tamaño del contenido de i y j
                 int tamanyo = cartones[i][j].length();
+                // Si tiene un tamaño de 1 le pondremos un espacio, esto es para que cuadre el carton y
+                // se pueda apreciar mejor.
                 if (tamanyo == 1) {
                     System.out.print("[" + cartones[i][j] + " ]");
                 } else {
