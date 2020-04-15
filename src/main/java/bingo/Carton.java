@@ -49,7 +49,7 @@ public class Carton {
 
     // Metodo mostrarCarton, donde recorremos la matriz y la imprimimos
     public void mostrarCarton() {
-        
+
         for (int i = 0; i < cartones.length; i++) {
 
             for (int j = 0; j < cartones[i].length; j++) {
@@ -326,7 +326,7 @@ public class Carton {
     }
 
     //Metodo comprobarSiLinea, devolverá true si ha encontrado linea o false si no
-    public boolean comprobarSiLinea() {
+    public void comprobarSiLinea() {
         //Creamos 3 contadores
         int contadorXlinea1 = 0;
         int contadorXlinea2 = 0;
@@ -363,9 +363,19 @@ public class Carton {
                 }
             }
         }
+        //Creamos 3 condiciones, si llegan a 5 cada contador , será linea en su respectiva fila
 
-        //Devuelve true si algunos de los contadores es 5 (cantaría linea)
-        return contadorXlinea1 == 5 || contadorXlinea2 == 5 || contadorXlinea3 == 5;
+        if (contadorXlinea1 == 5) {
+            System.out.println("¡¡¡Enhorabuena, has cantado LINEA en la Fila 1!!!");
+        }
+        if (contadorXlinea2 == 5) {
+            System.out.println("¡¡¡Enhorabuena, has cantado LINEA en la Fila 2!!!");
+        }
+
+        if (contadorXlinea3 == 5) {
+            System.out.println("¡¡¡Enhorabuena, has cantado LINEA en la Fila 3!!!");
+        }
+
 
     }
 
