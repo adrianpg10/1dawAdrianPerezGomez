@@ -33,12 +33,8 @@ public class JuegoBingo {
             System.out.println("La bola sacada del bombo es: " + bola);
             //Llamaremos al metodo tacharCasilla y le pasaremos una bola, variable creada anteriormente
             carton.tacharCasilla(bola);
-            //Llamaremos al comprobarSiLinea donde nos devolverá true o false
-            System.out.println("¿Ha hecho linea? " + carton.comprobarSiLinea());
-            // si comprobarSiLinea es true, cantará linea
-            if (carton.comprobarSiLinea()) {
-                System.out.println("¡¡¡Enhorabuena, has cantado LINEA!!!");
-            }
+            //llamamos al metodo comprobar linea
+            carton.comprobarSiLinea();
             //Llamaremos al comprobarBingo donde nos devolverá true o false
             System.out.println("¿Ha cantado Bingo? " + carton.comprobarBingo());
             // si comprobarBingo es true, cantará Bingo
