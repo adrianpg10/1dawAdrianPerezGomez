@@ -53,6 +53,9 @@ public class JuegoBingo {
         if (!(respuesta.equalsIgnoreCase("s"))) {
             System.out.println("Vaya, parece que te has rendido, vuelve a jugar más tarde.");
         }
+        
+        
+        carton.generarFicheroCarton(carton);
 
     }
 

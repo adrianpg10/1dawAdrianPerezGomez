@@ -5,6 +5,9 @@
  */
 package bingo;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -24,6 +27,36 @@ public class Carton {
         this.cartones = new String[3][9];
         generarCarton();
         rellenarArrayBlanco();
+    }
+
+    public void generarFicheroCarton(Carton carton) {
+
+        String idfichero = "carton.txt";
+
+        try (BufferedWriter flujo = new BufferedWriter(new FileWriter(idfichero))) {
+
+            for (String[] cartone : cartones) {
+
+                for (String i : cartone) {
+                    // Usamos metodo write() para escribir en el buffer
+                    int tamanyo = i.length();
+                    if (tamanyo == 1) {
+                        flujo.write("[" + i + " ]");
+                    } else {
+                        flujo.write("[" + i + "]");
+                    }
+
+                }
+                // Metodo newLine() añade línea en blanco
+                flujo.newLine();
+            }
+            // Metodo fluh() guarda cambios en disco 
+            flujo.flush();
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     //Metodo rellenarCarton
@@ -375,7 +408,6 @@ public class Carton {
         if (contadorXlinea3 == 5) {
             System.out.println("¡¡¡Enhorabuena, has cantado LINEA en la Fila 3!!!");
         }
-
 
     }
 
