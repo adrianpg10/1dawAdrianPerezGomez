@@ -20,7 +20,7 @@ public class Carton {
 
     private String[][] cartones;
 
-    private Bombo bolas;
+  
 // Creamos un constructor por defecto con 3 filas y 9 columnas
 
     public Carton() {
