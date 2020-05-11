@@ -9,6 +9,40 @@ package bingoamericano;
  *
  * @author adrip
  */
-public class CartonEuropeo {
+public final class CartonEuropeo extends Carton{
+    //Atributos
+    private static final int FILAS = 3;
+    private static final int COLUMNAS = 9;
+
+    //Constructor
+    public CartonEuropeo(int[][] carton, int filas, int columnas) {
+        super(carton, filas, columnas);
+    }
+
+    //Getters
+    public static int getFILAS() {
+        return FILAS;
+    }
+
+    public static int getCOLUMNAS() {
+        return COLUMNAS;
+    }
+
+    //Metodo
+    @Override
+    public void generarCarton() {
+        
+    }
+
+ 
+    
+
+    
+    
+    
+    
+    
+    
+    
     
 }
