@@ -9,6 +9,21 @@ package bingoamericano;
  *
  * @author adrip
  */
-public class BomboEuropeo {
+public class BomboEuropeo extends Bombo{
+    //Atributo
+    private static final int cantidadBolas = 90;
+
+    //Constructor
+    public BomboEuropeo() {
+        super(cantidadBolas);
+    }
+
+    //Getter
+    public static int getCantidadBolas() {
+        return cantidadBolas;
+    }
+    
+    
+    
     
 }
