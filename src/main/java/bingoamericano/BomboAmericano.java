@@ -11,16 +11,27 @@ package bingoamericano;
  */
 public final class BomboAmericano extends Bombo {
 
-    //Atributos
+    //Atributo
     private static final int cantidadBolas = 75;
 
+    //Constructor
     public BomboAmericano() {
-        super(cantidadBolas);
+        //Llamada al metodo llenarBombo y le pasamos la cantidadBolas por parametro
+        llenarBombo(cantidadBolas);
     }
 
     //Getter
     public static int getCantidadBolas() {
         return cantidadBolas;
+    }
+
+    //Metodo sobreescrito para llenar de bolas el bomboAmericano
+    @Override
+    public void llenarBombo(int numero) {
+
+        for (int i = 0; i < numero; i++) {
+            getBolas().add(i + 1);
+        }
     }
 
 }
