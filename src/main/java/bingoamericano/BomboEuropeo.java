@@ -9,21 +9,32 @@ package bingoamericano;
  *
  * @author adrip
  */
-public class BomboEuropeo extends Bombo{
+public class BomboEuropeo extends Bombo {
+
     //Atributo
     private static final int cantidadBolas = 90;
 
     //Constructor
     public BomboEuropeo() {
-        super(cantidadBolas);
+
+        //Llamada al metodo llenarBombo y le pasamos la cantidadBolas por parametro
+        llenarBombo(cantidadBolas);
     }
 
     //Getter
     public static int getCantidadBolas() {
         return cantidadBolas;
     }
-    
-    
-    
-    
+
+    //Metodo sobreescrito para llenar de bolas el bomboEuropeo
+    @Override
+    public void llenarBombo(int numero) {
+
+        for (int i = 0; i < numero; i++) {
+            getBolas().add(i + 1);
+        }
+    }
+
+  
+
 }
