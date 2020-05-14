@@ -17,11 +17,11 @@ public abstract class Bombo {
     //Añadimos los atributos correspondientes
     //Creamos una lista de bolas
     private ArrayList<Integer> bolas;
-    
+
     //Creamos un constructor donde rellenaremos la lista con el tamaño del atributo numero de bolas 
-    public Bombo(int numbolas) {
-        this.bolas = new ArrayList<>(numbolas);
-        llenarBombo();
+    public Bombo() {
+        this.bolas = new ArrayList<>();
+
     }
     //Getters y Setters
 
@@ -39,13 +39,8 @@ public abstract class Bombo {
         return "Bombo{" + "bolas=" + bolas + '}';
     }
 
-    //Metodo llenarBombo Recorremos el ArrayList, creamos un for con 90 iteraciones donde añadiremos numeros del 1 al 90
-    private  void llenarBombo() {
-        for (int i = 0; i < bolas.size(); i++) {
-            bolas.add(i + 1);
-        }
-
-    }
+    //Metodo abstracto llenarBombo, lo usaremos en las clases hijas
+    public abstract void llenarBombo(int numero);
 
     // Metodo sacarBobla, Sacaremos una bola aleatoriamente, mientras el arraylist no esté vacio
     public int sacarBola() {
