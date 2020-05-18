@@ -40,7 +40,7 @@ public abstract class Bombo {
     }
 
     //Metodo abstracto llenarBombo, lo usaremos en las clases hijas
-    public abstract void llenarBombo(int numero);
+    public abstract void llenarBombo();
 
     // Metodo sacarBobla, Sacaremos una bola aleatoriamente, mientras el arraylist no esté vacio
     public int sacarBola() {
@@ -70,7 +70,7 @@ public abstract class Bombo {
     // Recorremos el array y creamos un contador
     // Si el numero de la posicion[i] es igual a 0
     // entonces sumaremos 1 al contador
-    public int saberNumeroBolas() {
+    public int bolasDentro() {
         int contadorBolasVacias = 0;
 
         for (int i = 0; i < bolas.size(); i++) {
@@ -92,5 +92,15 @@ public abstract class Bombo {
             System.out.println(bola);
         }
     }
+
+    public boolean vacio() {
+
+        if (bolas.isEmpty()) {
+            return true;
+        }
+        return false;
+
+    }
+
 
 }
