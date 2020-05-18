@@ -29,9 +29,9 @@ public abstract class Bombo {
         return bolas;
     }
 
-    public void setBolas(ArrayList<Integer> bolas) {
-        this.bolas = bolas;
-    }
+//    public void setBolas(ArrayList<Integer> bolas) {
+//        this.bolas = bolas;
+//    }
 
     //ToString
     @Override
