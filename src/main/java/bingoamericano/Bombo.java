@@ -32,7 +32,6 @@ public abstract class Bombo {
 //    public void setBolas(ArrayList<Integer> bolas) {
 //        this.bolas = bolas;
 //    }
-
     //ToString
     @Override
     public String toString() {
@@ -45,23 +44,11 @@ public abstract class Bombo {
     // Metodo sacarBobla, Sacaremos una bola aleatoriamente, mientras el arraylist no esté vacio
     public int sacarBola() {
 
-        Random aleatorio = new Random();
-        // Numero aleatorio
-        int numeroBolaAleatoria;
-        // Condicion si el array no está vacío que entre.
         if (!(bolas.isEmpty())) {
-            // Creamos una variable posicionAleatoria donde dependiendo del tamaño del arraylist vaya generando numeros aleatorios
-            int posicionAleatoria = aleatorio.nextInt(bolas.size());
 
-            //Guardamos en la variable numeroBolaAleatoria el numero que esté en la posicion de la variable creada anteriormente
-            numeroBolaAleatoria = bolas.get(posicionAleatoria);
-            // Eliminamos del arraylist el numero de la posicion donde se encuentra
-            bolas.remove(posicionAleatoria);
-            // Devolvemos el numerode la bola aleatoria
-            return numeroBolaAleatoria;
+            return bolas.remove(0);
 
         }
-
         return -1;
 
     }
@@ -94,13 +81,7 @@ public abstract class Bombo {
     }
 
     public boolean vacio() {
-
-        if (bolas.isEmpty()) {
-            return true;
-        }
-        return false;
-
+        return bolas.isEmpty();
     }
-
 
 }
