@@ -17,7 +17,7 @@ public final class BomboAmericano extends Bombo {
     //Constructor
     public BomboAmericano() {
         //Llamada al metodo llenarBombo y le pasamos la cantidadBolas por parametro
-        llenarBombo(cantidadBolas);
+        llenarBombo();
     }
 
     //Getter
@@ -27,9 +27,9 @@ public final class BomboAmericano extends Bombo {
 
     //Metodo sobreescrito para llenar de bolas el bomboAmericano
     @Override
-    public void llenarBombo(int numero) {
+    public void llenarBombo() {
 
-        for (int i = 0; i < numero; i++) {
+        for (int i = 0; i < cantidadBolas; i++) {
             getBolas().add(i + 1);
         }
     }
