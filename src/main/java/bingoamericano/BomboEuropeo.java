@@ -18,7 +18,7 @@ public class BomboEuropeo extends Bombo {
     public BomboEuropeo() {
 
         //Llamada al metodo llenarBombo y le pasamos la cantidadBolas por parametro
-        llenarBombo(cantidadBolas);
+        llenarBombo();
     }
 
     //Getter
@@ -28,13 +28,11 @@ public class BomboEuropeo extends Bombo {
 
     //Metodo sobreescrito para llenar de bolas el bomboEuropeo
     @Override
-    public void llenarBombo(int numero) {
+    public void llenarBombo() {
 
-        for (int i = 0; i < numero; i++) {
+        for (int i = 0; i < cantidadBolas; i++) {
             getBolas().add(i + 1);
         }
     }
-
-  
 
 }
