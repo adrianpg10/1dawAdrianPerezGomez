@@ -5,6 +5,8 @@
  */
 package bingoamericano;
 
+import java.util.Random;
+
 /**
  *
  * @author adrip
@@ -14,31 +16,61 @@ public final class CartonAmericano extends Carton {
 
     private static final int FILAS = 5;
     private static final int COLUMNAS = 5;
-    private Patron patron;
+    private final Patron premio;
 
-    public CartonAmericano(Patron patron, int[][] carton, int filas, int columnas) {
-        super(carton, filas, columnas);
-        this.patron = patron;
+    public CartonAmericano() {
+        this.premio = generarPatron();
     }
 
-    //Getters y Setters
-    public Patron getPatron() {
-        return patron;
+    public static int getFILAS() {
+        return FILAS;
     }
 
-    public void setPatron(Patron patron) {
-        this.patron = patron;
+    public static int getCOLUMNAS() {
+        return COLUMNAS;
     }
 
-    
-    @Override
-    public String toString() {
-        return "CartonAmericano{" + super.toString() + "patron=" + patron + '}';
+    public Patron getPremio() {
+        return premio;
     }
 
     @Override
     public void generarCarton() {
-        
+
+    }
+
+    //generar metodo privado patron, en el que creamos un numero aleatorio 
+    // dependiendo de ese numero generaremos una forma
+    private Patron generarPatron() {
+
+        Random aleatorio = new Random();
+
+        int forma = aleatorio.nextInt(5) + 1;
+
+        switch (forma) {
+            case 1:
+                return premio.CARTON_LLENO;
+            case 2:
+                return premio.FORMA_C;
+            case 3:
+                return premio.FORMA_CRUZ;
+            case 4:
+                return premio.FORMA_F;
+            default:
+                return premio.FORMA_LINEAS;
+
+        }
+
+    }
+
+    @Override
+    public boolean esBingo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String toString() {
+        return "CartonAmericano{" + "premio=" + premio + '}';
     }
 
 }
