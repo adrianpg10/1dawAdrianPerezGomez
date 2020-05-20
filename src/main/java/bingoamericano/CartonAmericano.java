@@ -43,10 +43,66 @@ public final class CartonAmericano extends Carton {
     //Creamos un arrayList donde guardaremos todos los numeros de la matriz
     private ArrayList<Integer> numerosanteriores = new ArrayList<>();
 
-   
     @Override
     public void generarCarton() {
-        
+        Random aleatorio = new Random();
+        rellenarCarton();
+
+        for (int i = 0; i < this.getCarton().length; i++) {
+            for (int j = 0; j < this.getCarton()[i].length; j++) {
+
+                switch (j) {
+
+                    case 0:
+
+                        do {
+                            this.getCarton()[i][j] = aleatorio.nextInt(15) + 1;
+
+                        } while (numerosanteriores.contains(this.getCarton()[i][j]));
+                        numerosanteriores.add(this.getCarton()[i][j]);
+
+                        break;
+
+                    case 1:
+
+                        do {
+                            this.getCarton()[i][j] = aleatorio.nextInt(30 - 16 + 1) + 16;
+
+                        } while (numerosanteriores.contains(this.getCarton()[i][j]));
+                        numerosanteriores.add(this.getCarton()[i][j]);
+
+                        break;
+                    case 2:
+
+                        do {
+                            this.getCarton()[i][j] = aleatorio.nextInt(45 - 31 + 1) + 31;
+
+                        } while (numerosanteriores.contains(this.getCarton()[i][j]));
+                        numerosanteriores.add(this.getCarton()[i][j]);
+                        break;
+
+                    case 3:
+                        do {
+                            this.getCarton()[i][j] = aleatorio.nextInt(60 - 46 + 1) + 46;
+
+                        } while (numerosanteriores.contains(this.getCarton()[i][j]));
+                        numerosanteriores.add(this.getCarton()[i][j]);
+
+                        break;
+
+                    case 4:
+
+                        do {
+                            this.getCarton()[i][j] = aleatorio.nextInt(75 - 61 + 1) + 61;
+
+                        } while (numerosanteriores.contains(this.getCarton()[i][j]));
+                        numerosanteriores.add(this.getCarton()[i][j]);
+
+                        break;
+
+                }
+            }
+        }
 
     }
 
