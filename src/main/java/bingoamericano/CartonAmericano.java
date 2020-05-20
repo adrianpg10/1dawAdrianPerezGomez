@@ -5,6 +5,8 @@
  */
 package bingoamericano;
 
+import java.awt.Point;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -18,10 +20,14 @@ public final class CartonAmericano extends Carton {
     private static final int COLUMNAS = 5;
     private final Patron premio;
 
+    //Constructor
     public CartonAmericano() {
+        super(FILAS, COLUMNAS);
         this.premio = generarPatron();
+
     }
 
+    //Getters
     public static int getFILAS() {
         return FILAS;
     }
@@ -34,8 +40,56 @@ public final class CartonAmericano extends Carton {
         return premio;
     }
 
+    //Creamos un arrayList donde guardaremos todos los numeros de la matriz
+    private ArrayList<Integer> numerosanteriores = new ArrayList<>();
+
+   
     @Override
     public void generarCarton() {
+        
+
+    }
+
+    //Metodo privado para rellenar el carton de numeros. Dependiendo de cada columna, tendrán unos numeros u otros
+    //Añadiremos dichos numeros en la lista creada anteriormente
+    private void rellenarCarton() {
+        Random aleatorio = new Random();
+        for (int i = 0; i < this.getCarton().length; i++) {
+            for (int j = 0; j < this.getCarton()[i].length; j++) {
+
+                switch (j) {
+
+                    case 0:
+
+                        getCarton()[i][j] = aleatorio.nextInt(15) + 1;
+                        numerosanteriores.add(getCarton()[i][j]);
+                        break;
+                    case 1:
+
+                        getCarton()[i][j] = aleatorio.nextInt(30 - 16 + 1) + 16;
+                        numerosanteriores.add(getCarton()[i][j]);
+                        break;
+                    case 2:
+
+                        getCarton()[i][j] = aleatorio.nextInt(45 - 31 + 1) + 31;
+                        numerosanteriores.add(getCarton()[i][j]);
+                        break;
+
+                    case 3:
+                        getCarton()[i][j] = aleatorio.nextInt(60 - 46 + 1) + 46;
+                        numerosanteriores.add(getCarton()[i][j]);
+
+                        break;
+                    case 4:
+
+                        getCarton()[i][j] = aleatorio.nextInt(75 - 61 + 1) + 61;
+                        numerosanteriores.add(getCarton()[i][j]);
+                        break;
+                }
+
+            }
+
+        }
 
     }
 
@@ -68,9 +122,17 @@ public final class CartonAmericano extends Carton {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    //ToString
     @Override
     public String toString() {
         return "CartonAmericano{" + "premio=" + premio + '}';
     }
 
+    public static void main(String[] args) {
+        Carton a = new CartonAmericano();
+
+        a.generarCarton();
+        a.mostrarCarton();
+
+    }
 }
