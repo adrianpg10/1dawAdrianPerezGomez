@@ -19,13 +19,13 @@ public abstract class Carton {
     private int columnas;
 
     //Constructor parametrizado
-    public Carton(int[][] carton, int filas, int columnas) {
-        this.carton = carton;
-        this.filas = filas;
-        this.columnas = columnas;
-    }
-//Getters y Setters
+    public Carton(int filas, int columnas) {
 
+        this.carton = new int[filas][columnas];
+
+    }
+
+    //Getters y Setters
     public int[][] getCarton() {
         return carton;
     }
@@ -53,27 +53,51 @@ public abstract class Carton {
     //Metodos
     public abstract void generarCarton();
 
-    public Point tacharNumero(int numero) {
-        return null;
+//    public Point tacharNumero(int numero) {
+//
+//        Point aux = new Point(-1, -1);
+//
+//        for (int i = 0; i < carton.length; i++) {
+//            for (int j = 0; j < carton[i].length; j++) {
+//
+//                if (numero == carton[i][j]) {
+//                    carton[i][j] = 0;
+//                    aux.setLocation(i, j);
+//                    break;
+//                }
+//
+//            }
+//        }
+//
+//        return aux;
+//
+//    }
+
+    // Metodo mostrarCarton, donde recorremos la matriz y la imprimimos
+    public void mostrarCarton() {
+
+        for (int i = 0; i < carton.length; i++) {
+
+            for (int j = 0; j < carton[i].length; j++) {
+                int tamanyo = String.valueOf(carton[i][j]).length();
+                
+                if (tamanyo == 1) {
+                    System.out.print("[" + carton[i][j] + " ]");
+                } else {
+                    System.out.print("[" + carton[i][j] + "]");
+                }
+
+            }
+            System.out.println("");
+        }
 
     }
-    
-    public boolean esLinea(int numeroFila){
-        return false;
-        
-    }
-    
-    public boolean esBingo(){
-        return false;
-        
-    }
+
+    public abstract boolean esBingo();
 
     @Override
     public String toString() {
         return "Carton{" + "carton=" + carton + ", filas=" + filas + ", columnas=" + columnas + '}';
     }
-    
-    
-    
 
 }
