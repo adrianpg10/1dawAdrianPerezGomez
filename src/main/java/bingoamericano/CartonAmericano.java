@@ -43,6 +43,10 @@ public final class CartonAmericano extends Carton {
     //Creamos un arrayList donde guardaremos todos los numeros de la matriz
     private ArrayList<Integer> numerosanteriores = new ArrayList<>();
 
+    //Creamos una matriz con el mismo tamaño que la matriz original, para llenarla despues con las coordenadas
+    private int[][] clon = new int[FILAS][COLUMNAS];
+
+    //Metodo en el que evitaremos que los numeros de cada columna se repitan y haremos un patron
     @Override
     public void generarCarton() {
         Random aleatorio = new Random();
@@ -100,6 +104,34 @@ public final class CartonAmericano extends Carton {
 
                         break;
 
+                }
+            }
+        }
+
+        int numero1;
+        int numero2;
+
+        for (int i = 0; i < this.getCarton().length; i++) {
+            for (int j = 0; j < this.getCarton()[i].length; j++) {
+
+//               //Recorremos el patron de puntos
+                for (Point punto : this.premio.getCasillas()) {
+
+//
+//                  //Hacemos un casting a la cordenada de x e y, ya que son double y la matriz es int
+                    numero1 = (int) punto.getLocation().getX();
+                    numero2 = (int) punto.getLocation().getY();
+
+//                      
+                    //Rellenamos las coordenadas con numeros
+                    this.clon[numero1][numero2] = this.getCarton()[i][j];
+                }
+//                Comparamos las dos matrices y si el numero de la posicion(i, j) es diferente,
+//                        meteremos un 0 a la matriz original
+                if (this.getCarton()[i][j] != this.clon[i][j]) {
+                    this.getCarton()[i][j] = 0;
+
+//
                 }
             }
         }
@@ -184,11 +216,11 @@ public final class CartonAmericano extends Carton {
         return "CartonAmericano{" + "premio=" + premio + '}';
     }
 
-    public static void main(String[] args) {
-        Carton a = new CartonAmericano();
-
-        a.generarCarton();
-        a.mostrarCarton();
-
-    }
+//    public static void main(String[] args) {
+//        CartonAmericano a = new CartonAmericano();
+//
+//        a.generarCarton();
+//        a.mostrarCarton();
+//
+//    }
 }
