@@ -56,7 +56,6 @@ public abstract class Carton {
     //Método que devuelve un punto, si el numero pasado por parametro es igual que el numero de i y j 
     //pues pondremos en esa posicion a 0 y devolveremos un punto de tipo Point
     //Si no encuentra el numero devolverá otro punto en este caso será -1,-1
-    
     public Point tacharNumero(int numero) {
 
         Point aux = new Point(-1, -1);
@@ -77,31 +76,31 @@ public abstract class Carton {
 
     }
 
-    // Metodo mostrarCarton, donde recorremos la matriz y la imprimimos
-    public void mostrarCarton() {
+    public abstract boolean esBingo();
 
-        for (int i = 0; i < carton.length; i++) {
+    //ToString donde recorremos el carton y lo imprimimos
+    @Override
+    public String toString() {
 
-            for (int j = 0; j < carton[i].length; j++) {
+        String numero = "";
+
+        for (int i = 0; i < this.carton.length; i++) {
+            for (int j = 0; j < this.carton[i].length; j++) {
                 int tamanyo = String.valueOf(carton[i][j]).length();
 
                 if (tamanyo == 1) {
-                    System.out.print("[" + carton[i][j] + " ]");
+                    numero += "[" + this.carton[i][j] + " ]";
                 } else {
-                    System.out.print("[" + carton[i][j] + "]");
+                    numero += "[" + this.carton[i][j] + "]";
                 }
 
             }
-            System.out.println("");
+
+            numero += "\n";
+
         }
 
-    }
-
-    public abstract boolean esBingo();
-
-    @Override
-    public String toString() {
-        return "Carton{" + "carton=" + carton + ", filas=" + filas + ", columnas=" + columnas + '}';
+        return numero;
     }
 
 }
