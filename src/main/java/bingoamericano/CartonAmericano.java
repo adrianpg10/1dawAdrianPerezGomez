@@ -205,9 +205,24 @@ public final class CartonAmericano extends Carton {
 
     }
 
+    //Metodo bingo, donde guardamos en una variable el numero de casillas que tiene el carton
+    //Luego, creamos un contador que sumará 1 por cada casilla que sea 0
+    // Finalmente comparamos el tamanyo del carton con el contador, si son iguales es bingo
     @Override
     public boolean esBingo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int tamanyoCarton = FILAS * COLUMNAS;
+        int contadorDeCeros = 0;
+        for (int i = 0; i < this.getCarton().length; i++) {
+            for (int j = 0; j < this.getCarton()[i].length; j++) {
+
+                if (this.getCarton()[i][j] == 0) {
+                    contadorDeCeros++;
+                }
+
+            }
+        }
+
+        return contadorDeCeros == tamanyoCarton;
     }
 
     //ToString
