@@ -228,14 +228,7 @@ public final class CartonAmericano extends Carton {
     //ToString
     @Override
     public String toString() {
-        return "CartonAmericano{" + "premio=" + premio + '}';
+        return super.toString();
     }
 
-//    public static void main(String[] args) {
-//        CartonAmericano a = new CartonAmericano();
-//
-//        a.generarCarton();
-//        a.mostrarCarton();
-//
-//    }
 }
