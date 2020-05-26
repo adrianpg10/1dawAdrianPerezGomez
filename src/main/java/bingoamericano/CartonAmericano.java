@@ -191,15 +191,15 @@ public final class CartonAmericano extends Carton {
 
         switch (forma) {
             case 1:
-                return premio.CARTON_LLENO;
+                return Patron.CARTON_LLENO;
             case 2:
-                return premio.FORMA_C;
+                return Patron.FORMA_C;
             case 3:
-                return premio.FORMA_CRUZ;
+                return Patron.FORMA_CRUZ;
             case 4:
-                return premio.FORMA_F;
+                return Patron.FORMA_F;
             default:
-                return premio.FORMA_LINEAS;
+                return Patron.FORMA_LINEAS;
 
         }
 
