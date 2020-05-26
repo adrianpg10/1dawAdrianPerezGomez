@@ -17,11 +17,28 @@ public class JuegoBingo {
 
         CartonAmericano cartonAmericano = new CartonAmericano();
         BomboAmericano bomboAmericano = new BomboAmericano();
+        BingoAmericano bingoAmericano = new BingoAmericano(cartonAmericano, bomboAmericano, "1", LocalDate.now(), "J01");
+        bingoAmericano.getBombo().llenarBombo();
 
-        cartonAmericano.generarCarton();
-        BingoAmericano BingoAmericano = new BingoAmericano(cartonAmericano, bomboAmericano, "1", LocalDate.now(), "J01");
+        bingoAmericano.getCarton().generarCarton();
 
-        BingoAmericano.getCarton().mostrarCarton();
+        
+        System.out.println(
+                " B   I   N   G   O"+"\n"+
+                bingoAmericano.getCarton().toString());
+
+        int bola = bingoAmericano.getBombo().sacarBola();
+
+        System.out.println("La bola es: " + bola);
+        System.out.println(bingoAmericano.getCarton().tacharNumero(bola));
+
+           System.out.println(
+                " B   I   N   G   O"+"\n"+
+                bingoAmericano.getCarton().toString());
+
+        System.out.println("¿Es bingo?: " + bingoAmericano.getCarton().esBingo());
+
+        System.out.println("---------JUEGO BINGO AMERICANO----------");
 
     }
 
