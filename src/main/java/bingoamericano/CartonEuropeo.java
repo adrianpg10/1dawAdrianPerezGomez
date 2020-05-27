@@ -15,9 +15,11 @@ public final class CartonEuropeo extends Carton{
     private static final int COLUMNAS = 9;
 
     //Constructor
-    public CartonEuropeo(int[][] carton, int filas, int columnas) {
-        super(carton, filas, columnas);
+
+    public CartonEuropeo(int filas, int columnas) {
+        super(filas, columnas);
     }
+   
 
     //Getters
     public static int getFILAS() {
@@ -32,6 +34,11 @@ public final class CartonEuropeo extends Carton{
     @Override
     public void generarCarton() {
         
+    }
+
+    @Override
+    public boolean esBingo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
  
