@@ -13,6 +13,7 @@ import java.time.LocalDate;
  */
 public class BingoVO {
 
+    //Creacion de atributos
     private String id;
     private LocalDate fecha;
     private String idJugador;
@@ -20,6 +21,7 @@ public class BingoVO {
     private String bombo;
     private String carton;
 
+    //Constructor parametrizado
     public BingoVO(String id, LocalDate fecha, String idJugador, int tipo, String bombo, String carton) {
         this.id = id;
         this.fecha = fecha;
@@ -29,6 +31,13 @@ public class BingoVO {
         this.carton = carton;
     }
 
+    //Constructor por defecto
+    public BingoVO() {
+        
+    }
+
+    
+    //Getters y Setters
     public String getId() {
         return id;
     }
@@ -77,6 +86,7 @@ public class BingoVO {
         this.carton = carton;
     }
 
+    //ToString
     @Override
     public String toString() {
         return "BingoVO{" + "id=" + id + ", fecha=" + fecha + ", idJugador=" + idJugador + ", tipo=" + tipo + ", bombo=" + bombo + ", carton=" + carton + '}';
