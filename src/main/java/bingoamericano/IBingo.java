@@ -18,7 +18,7 @@ public interface IBingo {
     List<BingoVO> getAll();
 
     // Méodo para obtener un registro a partir de la PK
-    BingoVO findByPk(int pk);
+    BingoVO findByPk(String pk);
 
     // Método para insertar un registro
     int insertBingo(BingoVO bingo);
@@ -27,13 +27,13 @@ public interface IBingo {
     int insertBingo(List<BingoVO> lista);
 
     // Método para borrar un bingo
-    int deleteBingo(BingoVO p);
+    int deleteBingo(BingoVO bingo);
 
     // Método para borrar toda la tabla
     int deleteBingo();
 
     // Método para modificar un bingo. Se modifica un bingo que tenga esa 'pk'
     // con los nuevos datos que traiga el bingo 'nuevosDatos'
-    int updateBingo(int pk, BingoVO nuevosDatos);
+    int updateBingo(String pk, BingoVO nuevosDatos);
 
 }
