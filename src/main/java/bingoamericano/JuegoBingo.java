@@ -6,6 +6,7 @@
 package bingoamericano;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 /**
  *
@@ -14,32 +15,43 @@ import java.time.LocalDate;
 public class JuegoBingo {
 
     public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
 
-        CartonAmericano cartonAmericano = new CartonAmericano();
-        BomboAmericano bomboAmericano = new BomboAmericano();
-        BingoAmericano bingoAmericano = new BingoAmericano(cartonAmericano, bomboAmericano, "1", LocalDate.now(), "J01");
+        String respuesta;
+        BingoAmericano bingoAmericano = new BingoAmericano(new CartonAmericano(), new BomboAmericano(), "2", LocalDate.now(), "13");
         bingoAmericano.getBombo().llenarBombo();
-
         bingoAmericano.getCarton().generarCarton();
 
-        
         System.out.println(
-                " B   I   N   G   O"+"\n"+
-                bingoAmericano.getCarton().toString());
+                " B   I   N   G   O" + "\n"
+                + bingoAmericano.getCarton().toString());
 
-        int bola = bingoAmericano.getBombo().sacarBola();
+        do {
+            //Mostramos el carton
 
-        System.out.println("La bola es: " + bola);
-        System.out.println(bingoAmericano.getCarton().tacharNumero(bola));
+            //Creamos una variable bola donde almacenará el numero de la bola sacada del bombo
+            int bola = bingoAmericano.getBombo().sacarBola();
 
-           System.out.println(
-                " B   I   N   G   O"+"\n"+
-                bingoAmericano.getCarton().toString());
+            System.out.println("La bola es: " + bola);
+            System.out.println(bingoAmericano.getCarton().tacharNumero(bola));
 
-        System.out.println("¿Es bingo?: " + bingoAmericano.getCarton().esBingo());
+            System.out.println(
+                    " B   I   N   G   O" + "\n"
+                    + bingoAmericano.getCarton().toString());
 
-        System.out.println("---------JUEGO BINGO AMERICANO----------");
+            System.out.println("¿Es bingo?: " + bingoAmericano.getCarton().esBingo());
+
+            if (bingoAmericano.getCarton().esBingo()) {
+                System.out.println("¡¡¡Enhorabuena, has cantado BINGO!!!");
+                // Paramos el bucle si cantamos bingo
+                break;
+
+            }
+
+            System.out.println("¿Quieres sacar otra bola del bombo? s/n");
+            respuesta = teclado.nextLine();
+
+        } while (respuesta.equalsIgnoreCase("s"));
 
     }
-
 }
