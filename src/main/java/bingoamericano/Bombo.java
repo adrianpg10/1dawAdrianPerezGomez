@@ -29,13 +29,12 @@ public abstract class Bombo {
         return bolas;
     }
 
-//    public void setBolas(ArrayList<Integer> bolas) {
-//        this.bolas = bolas;
-//    }
-    //ToString
+    //Modificamos toString para que salga las bolas en una linea y reemplazaremos los corchetes por "".
     @Override
     public String toString() {
-        return "Bombo{" + "bolas=" + bolas + '}';
+
+        return bolas.toString().replace("[", "").replace("]", "");
+
     }
 
     //Metodo abstracto llenarBombo, lo usaremos en las clases hijas
