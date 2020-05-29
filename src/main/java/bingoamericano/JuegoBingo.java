@@ -36,12 +36,14 @@ public class JuegoBingo {
                 switch (opcionPartida) {
                     case 1:
                         System.out.println("Cargando Partida....");
+                        
+                        
                         break;
                     case 2:
 
                         teclado.nextLine();
 
-                        BingoAmericano bingoAmericano = new BingoAmericano(new CartonAmericano(), new BomboAmericano(), "2", LocalDate.now(), EleccionNombreJugador());
+                        BingoAmericano bingoAmericano = new BingoAmericano(new CartonAmericano(), new BomboAmericano(), escribeId(), LocalDate.now(), EleccionNombreJugador());
                         bingoAmericano.getBombo().llenarBombo();
                         bingoAmericano.getCarton().generarCarton();
 
@@ -105,6 +107,10 @@ public class JuegoBingo {
 
         } while (opcion == 1);
 
+        if (opcion == 2) {
+            guardarPartida(bingoAmericano);
+        }
+
     }
 
     //Metodo para elegir el nombre del jugador
@@ -117,6 +123,31 @@ public class JuegoBingo {
         System.out.println("");
 
         return nombre;
+
+    }
+    //Metodo para seleccionar una ID
+    public static String escribeId() {
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Escribe una ID: ");
+        String id = teclado.nextLine();
+
+        System.out.println("id asignado con éxito...........");
+        System.out.println("");
+
+        return id;
+
+    }
+
+    //Metodo para guardar partida, donde tendremos que crear un objeto bingoVO.
+    //En el que le meteremos todos los parametros del BingoAmericano 
+    //Una vez creado el objeto bingoVO, crearemos un objeto BingoDAO para acceder al metodo intertBingo que insertará la partida a la base de datos
+    public static void guardarPartida(BingoAmericano bingo) {
+
+        BingoVO bingoVO = new BingoVO(bingo.getId(), bingo.getFecha(), bingo.getIdJugador(), 1, bingo.getBombo().toString(), bingo.getCarton().mostrarCartonEnLinea());
+
+        BingoDAO bingoDAO = new BingoDAO();
+
+        bingoDAO.insertBingo(bingoVO);
 
     }
 
