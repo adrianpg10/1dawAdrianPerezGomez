@@ -65,7 +65,7 @@ public class BingoDAO implements IBingo {
         ResultSet res = null;
         BingoVO bingo = new BingoVO();
 
-        String sql = "select * from tablaBingo where pk=?";
+        String sql = "select * from tablaBingo where id=?";
 
         try ( PreparedStatement prest = con.prepareStatement(sql)) {
             // Preparamos la sentencia parametrizada
@@ -81,7 +81,7 @@ public class BingoDAO implements IBingo {
 
                 bingo.setId(res.getString("id"));
                 bingo.setFecha(res.getDate("fecha").toLocalDate());
-                bingo.setId(res.getString("idJugador"));
+                bingo.setIdJugador(res.getString("idJugador"));
                 bingo.setTipo(res.getInt("tipo"));
                 bingo.setBombo(res.getString("bombo"));
                 bingo.setCarton(res.getString("carton"));
@@ -115,8 +115,9 @@ public class BingoDAO implements IBingo {
                 prest.setString(1, bingo.getId());
                 prest.setDate(2, Date.valueOf(bingo.getFecha()));
                 prest.setString(3, bingo.getIdJugador());
-                prest.setString(4, bingo.getBombo());
-                prest.setString(5, bingo.getCarton());
+                prest.setInt(4, bingo.getTipo());
+                prest.setString(5, bingo.getBombo());
+                prest.setString(6, bingo.getCarton());
 
                 numFilas = prest.executeUpdate();
             } catch (SQLException ex) {
@@ -142,7 +143,7 @@ public class BingoDAO implements IBingo {
     public int deleteBingo(BingoVO bingo) {
         int numFilas = 0;
 
-        String sql = "delete from tablaBingo where pk = ?";
+        String sql = "delete from tablaBingo where pk=?";
 
         // Sentencia parametrizada
         try ( PreparedStatement prest = con.prepareStatement(sql)) {
