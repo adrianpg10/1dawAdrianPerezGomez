@@ -103,4 +103,23 @@ public abstract class Carton {
         return numero;
     }
 
+    //Metodo Para mostrar los numeros del carton en una sola linea, para poder añadirlo a la base de datos
+    // posteriormente
+    public String mostrarCartonEnLinea() {
+
+        String numero = "";
+
+        for (int i = 0; i < this.carton.length; i++) {
+            for (int j = 0; j < this.carton[i].length; j++) {
+
+                numero += this.carton[i][j] + ",";
+
+            }
+
+        }
+
+        return numero;
+
+    }
+
 }
