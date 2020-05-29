@@ -33,7 +33,7 @@ public abstract class Bombo {
     @Override
     public String toString() {
 
-        return bolas.toString().replace("[", "").replace("]", "");
+        return bolas.toString().replace("[", "").replace("]", "").replace(" ", "");
 
     }
 
