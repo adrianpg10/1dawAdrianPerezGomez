@@ -235,5 +235,32 @@ public class JuegoBingo {
 
     }
   
+       //Metodo privado en el que tendremos que pasarle el carton en un String
+    // Separamos por "," y con el contador sumamos las casillas para que nos vaya recorriendo el numero del carton
+    // al final tendremos que devolver un cartonAmericano
+    private static CartonAmericano leerCartonAmericano(String lineaCarton) {
+
+        String[] tokens;
+        CartonAmericano cartonAmericano = new CartonAmericano();
+        int numeroCarton;
+        int contador = 0;
+
+        tokens = lineaCarton.split(",");
+        for (int j = 0; j < cartonAmericano.getCarton().length; j++) {
+            for (int k = 0; k < cartonAmericano.getCarton()[j].length; k++) {
+
+                lineaCarton = tokens[contador];
+                numeroCarton = Integer.parseInt(lineaCarton);
+                cartonAmericano.getCarton()[j][k] = numeroCarton;
+
+                contador++;
+            }
+        }
+
+        return cartonAmericano;
+
+    }
+    
+    
 
 }
