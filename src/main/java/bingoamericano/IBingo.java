@@ -26,11 +26,6 @@ public interface IBingo {
     // Método para insertar varios registros
     int insertBingo(List<BingoVO> lista);
 
-    // Método para borrar un bingo
-    int deleteBingo(BingoVO bingo);
-
-    // Método para borrar toda la tabla
-    int deleteBingo();
 
     // Método para modificar un bingo. Se modifica un bingo que tenga esa 'pk'
     // con los nuevos datos que traiga el bingo 'nuevosDatos'
