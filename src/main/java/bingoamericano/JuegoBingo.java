@@ -7,6 +7,7 @@ package bingoamericano;
 
 import java.awt.Point;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -35,15 +36,18 @@ public class JuegoBingo {
 
                 switch (opcionPartida) {
                     case 1:
-                        System.out.println("Cargando Partida....");
-                        
-                        
+                        teclado.nextLine();
+                        System.out.println("Escribe la ID de la partida: ");
+                        String partida = teclado.nextLine();
+
+                        //cargarPartidaBingoAmericano(cargarPartida(partida));
+
                         break;
                     case 2:
 
                         teclado.nextLine();
 
-                        BingoAmericano bingoAmericano = new BingoAmericano(new CartonAmericano(), new BomboAmericano(), escribeId(), LocalDate.now(), EleccionNombreJugador());
+                        BingoAmericano bingoAmericano = new BingoAmericano(new CartonAmericano(), new BomboAmericano(),generarID(), LocalDate.now(), EleccionNombreJugador());
                         bingoAmericano.getBombo().llenarBombo();
                         bingoAmericano.getCarton().generarCarton();
 
@@ -113,6 +117,58 @@ public class JuegoBingo {
 
     }
 
+    //Metodo para mostrar la funcionalidad del juego BingoAmericano
+    public static void cargarPartidaBingoAmericano(BingoAmericano bingoAmericano) {
+        Scanner teclado = new Scanner(System.in);
+        Point punto = new Point(-1, -1);
+        String respuesta;
+        int opcion = 0;
+
+        System.out.println(
+                " B   I   N   G   O" + "\n"
+                + bingoAmericano.getCarton().toString());
+
+        System.out.println("-----------------------------------");
+
+        do {
+            //Mostramos el carton
+
+            //Creamos una variable bola donde almacenará el numero de la bola sacada del bombo
+            int bola = bingoAmericano.getBombo().sacarBola();
+
+            System.out.println("Ha salido la bola: " + bola);
+            if (bingoAmericano.getCarton().tacharNumero(bola).equals(punto)) {
+                System.out.println("La bola no se encuentra en el carton, sigue sacando bolas");
+            } else {
+                System.out.println("La bola se encuentra en el cartón, sigue tirando para cantar bingo");
+            }
+
+            System.out.println(
+                    " B   I   N   G   O" + "\n"
+                    + bingoAmericano.getCarton().toString());
+
+            System.out.println("¿Has cantado bingo? " + bingoAmericano.getCarton().esBingo());
+
+            if (bingoAmericano.getCarton().esBingo()) {
+                System.out.println("¡¡¡Enhorabuena, has cantado BINGO!!!");
+                // Paramos el bucle si cantamos bingo
+                break;
+
+            }
+
+            System.out.println("¿Ahora que quieres hacer?");
+            System.out.println("1.- Sacar Bola");
+            System.out.println("2.- GuardarPartida");
+            opcion = teclado.nextInt();
+
+        } while (opcion == 1);
+
+        if (opcion == 2) {
+            //guardarPartida(bingoAmericano);
+        }
+
+    }
+
     //Metodo para elegir el nombre del jugador
     public static String EleccionNombreJugador() {
         Scanner teclado = new Scanner(System.in);
@@ -125,8 +181,9 @@ public class JuegoBingo {
         return nombre;
 
     }
+
     //Metodo para seleccionar una ID
-    public static String escribeId() {
+    public static String generarID() {
         Scanner teclado = new Scanner(System.in);
         System.out.println("Escribe una ID: ");
         String id = teclado.nextLine();
@@ -150,5 +207,9 @@ public class JuegoBingo {
         bingoDAO.insertBingo(bingoVO);
 
     }
+    
+    
+     
+  
 
 }
