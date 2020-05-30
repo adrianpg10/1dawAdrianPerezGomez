@@ -181,7 +181,7 @@ public class BingoDAO implements IBingo {
     @Override
     public int updateBingo(String pk, BingoVO nuevosDatos) {
         int numFilas = 0;
-        String sql = "update tablaBingo set id = ?, fecha = ?, idJugador = ?, tipo = ?, bombo = ?, carton = ? where pk=?";
+        String sql = "update tablaBingo set fecha = ?, idJugador = ?, tipo = ?, bombo = ?, carton = ? where id=?";
 
         if (findByPk(pk) == null) {
             // El bingo a actualizar no existe
@@ -193,7 +193,7 @@ public class BingoDAO implements IBingo {
 
                 // Establecemos los parámetros de la sentencia
                 prest.setDate(1, Date.valueOf(nuevosDatos.getFecha()));
-                prest.setString(2, nuevosDatos.getId());
+                prest.setString(2, nuevosDatos.getIdJugador());
                 prest.setInt(3, nuevosDatos.getTipo());
                 prest.setString(4, nuevosDatos.getBombo());
                 prest.setString(5, nuevosDatos.getCarton());
@@ -209,7 +209,6 @@ public class BingoDAO implements IBingo {
 
     @Override
     public List<BingoVO> seleccionarFila(String pk) {
-         
 
         List<BingoVO> lista = new ArrayList<>();
         ResultSet res = null;
@@ -217,7 +216,7 @@ public class BingoDAO implements IBingo {
 
         String sql = "select * from tablaBingo where id=?";
 
-        try (PreparedStatement prest = con.prepareStatement(sql)) {
+        try ( PreparedStatement prest = con.prepareStatement(sql)) {
             // Preparamos la sentencia parametrizada
             prest.setString(1, pk);
 
@@ -236,7 +235,6 @@ public class BingoDAO implements IBingo {
                 b.setTipo(res.getInt("tipo"));
                 b.setBombo(res.getString("bombo"));
                 b.setCarton(res.getString("carton"));
-              
 
                 //Añadimos el objeto a la lista
                 lista.add(b);
@@ -247,7 +245,6 @@ public class BingoDAO implements IBingo {
 
         return lista;
 
-    
     }
 
 }
