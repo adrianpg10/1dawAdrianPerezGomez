@@ -45,7 +45,7 @@ public class BingoDAO implements IBingo {
 
                 bingo.setId(res.getString("id"));
                 bingo.setFecha(res.getDate("fecha").toLocalDate());
-                bingo.setId(res.getString("idJugador"));
+                bingo.setIdJugador(res.getString("idJugador"));
                 bingo.setTipo(res.getInt("tipo"));
                 bingo.setBombo(res.getString("bombo"));
                 bingo.setCarton(res.getString("carton"));
