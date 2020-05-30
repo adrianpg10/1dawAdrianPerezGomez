@@ -140,45 +140,6 @@ public class BingoDAO implements IBingo {
     }
 
     @Override
-    public int deleteBingo(BingoVO bingo) {
-        int numFilas = 0;
-
-        String sql = "delete from tablaBingo where pk=?";
-
-        // Sentencia parametrizada
-        try ( PreparedStatement prest = con.prepareStatement(sql)) {
-
-            // Establecemos los parámetros de la sentencia
-            prest.setString(1, bingo.getId());
-            // Ejecutamos la sentencia
-            numFilas = prest.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(BingoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return numFilas;
-    }
-
-    @Override
-    public int deleteBingo() {
-
-        String sql = "delete from tablaBingo";
-
-        int nfilas = 0;
-
-        // Preparamos el borrado de datos  mediante un Statement
-        // No hay parámetros en la sentencia SQL
-        try ( Statement st = con.createStatement()) {
-            // Ejecución de la sentencia
-            nfilas = st.executeUpdate(sql);
-        } catch (SQLException ex) {
-            Logger.getLogger(BingoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        // El borrado se realizó con éxito, devolvemos filas afectadas
-        return nfilas;
-    }
-
-    @Override
     public int updateBingo(String pk, BingoVO nuevosDatos) {
         int numFilas = 0;
         String sql = "update tablaBingo set fecha = ?, idJugador = ?, tipo = ?, bombo = ?, carton = ? where id=?";
