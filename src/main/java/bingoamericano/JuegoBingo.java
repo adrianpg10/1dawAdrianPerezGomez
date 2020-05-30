@@ -36,7 +36,7 @@ public class JuegoBingo {
 
                 switch (opcionPartida) {
                     case 1:
-                        teclado.nextLine();
+
                         System.out.println("Escribe la ID de la partida: ");
                         String partida = teclado.nextLine();
 
@@ -44,8 +44,6 @@ public class JuegoBingo {
 
                         break;
                     case 2:
-
-                        teclado.nextLine();
 
                         BingoAmericano bingoAmericano = new BingoAmericano(new CartonAmericano(), new BomboAmericano(), generarID(), LocalDate.now(), EleccionNombreJugador());
                         bingoAmericano.getBombo().llenarBombo();
@@ -182,17 +180,20 @@ public class JuegoBingo {
 
     }
 
-    //Metodo para seleccionar una ID
+//    Metodo para generarID automatica cogiendo el ultimo id y sumandole 1
     public static String generarID() {
-        Scanner teclado = new Scanner(System.in);
-        System.out.println("Escribe una ID: ");
-        String id = teclado.nextLine();
+        BingoDAO bingodao = new BingoDAO();
+        String id = "";
+        int parseID;
+        for (BingoVO bingoVO : bingodao.getAll()) {
+            
+            id = bingoVO.getId();
 
-        System.out.println("id asignado con éxito...........");
-        System.out.println("");
+        }
+        parseID = Integer.parseInt(id) + 1;
+        id = String.valueOf(parseID);
 
         return id;
-
     }
 
     //Metodo para guardar partida, donde tendremos que crear un objeto bingoVO.
