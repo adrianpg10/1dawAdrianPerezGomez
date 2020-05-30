@@ -261,6 +261,30 @@ public class JuegoBingo {
 
     }
     
-    
+      //Metodo cargar partida, donde le pasaremos por parametro la id
+    // para que nos recorra la fila, una vez recorrida la fila, tendremos que añadir los atributos al objeto bingoAmericano
+    public static BingoAmericano cargarPartida(String id) {
+        BingoAmericano bingoAmericano = null;
+        String pk;
+        LocalDate fecha;
+        String idJugador;
+        String lineaCarton;
+        String bombo;
+
+        BingoDAO bingoDAO = new BingoDAO();
+
+        for (BingoVO bingoVO : bingoDAO.seleccionarFila(id)) {
+
+            pk = bingoVO.getId();
+            fecha = bingoVO.getFecha();
+            idJugador = bingoVO.getIdJugador();
+            lineaCarton = bingoVO.getCarton();
+            bombo = bingoVO.getBombo();
+            bingoAmericano = new BingoAmericano(leerCartonAmericano(lineaCarton), leerBomboAmericano(bombo), pk, fecha, idJugador);
+        }
+
+        return bingoAmericano;
+
+    }
 
 }
