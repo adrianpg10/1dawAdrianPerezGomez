@@ -187,9 +187,13 @@ public class JuegoBingo {
         String id = "";
         int parseID;
         for (BingoVO bingoVO : bingodao.getAll()) {
-
+            
             id = bingoVO.getId();
 
+        }
+        // Si no hay registros en la tabla que los ponga automaticamente a 0 para poder sumarle 1 posteriormente
+        if (id.equalsIgnoreCase("")) {
+            id ="0";
         }
         parseID = Integer.parseInt(id) + 1;
         id = String.valueOf(parseID);
