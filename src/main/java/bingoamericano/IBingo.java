@@ -35,5 +35,8 @@ public interface IBingo {
     // Método para modificar un bingo. Se modifica un bingo que tenga esa 'pk'
     // con los nuevos datos que traiga el bingo 'nuevosDatos'
     int updateBingo(String pk, BingoVO nuevosDatos);
+    
+    
+      List<BingoVO> seleccionarFila(String pk);
 
 }
