@@ -207,4 +207,47 @@ public class BingoDAO implements IBingo {
         }
     }
 
+    @Override
+    public List<BingoVO> seleccionarFila(String pk) {
+         
+
+        List<BingoVO> lista = new ArrayList<>();
+        ResultSet res = null;
+        BingoVO bingo = new BingoVO();
+
+        String sql = "select * from tablaBingo where id=?";
+
+        try (PreparedStatement prest = con.prepareStatement(sql)) {
+            // Preparamos la sentencia parametrizada
+            prest.setString(1, pk);
+
+            // Ejecutamos la sentencia y obtenemos las filas en el objeto ResultSet
+            res = prest.executeQuery();
+
+            // Preparamos la sentencia parametrizada
+            prest.setString(1, pk);
+
+            while (res.next()) {
+                BingoVO b = new BingoVO();
+                // Recogemos los datos del bingo, guardamos en un objeto
+                b.setId(res.getString("id"));
+                b.setFecha(res.getDate("fecha").toLocalDate());
+                b.setIdJugador(res.getString("idjugador"));
+                b.setTipo(res.getInt("tipo"));
+                b.setBombo(res.getString("bombo"));
+                b.setCarton(res.getString("carton"));
+              
+
+                //Añadimos el objeto a la lista
+                lista.add(b);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BingoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return lista;
+
+    
+    }
+
 }
