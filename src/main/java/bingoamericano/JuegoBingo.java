@@ -210,6 +210,30 @@ public class JuegoBingo {
     
     
      
+    //Metodo privado en el que tendremos que pasarle el bombo en un String.
+    // Separamos por coma y le añadimos el numero del bombo recorriendo los tokens al bomboAmericano
+    // y lo devolvemos
+    private static BomboAmericano leerBomboAmericano(String lineaBombo) {
+
+        String[] tokens;
+        BomboAmericano bomboAmericano = new BomboAmericano();
+        int numeroBombo;
+
+        tokens = lineaBombo.split(",");
+
+        for (int i = 0; i < tokens.length; i++) {
+
+            lineaBombo = tokens[i];
+
+            numeroBombo = Integer.parseInt(lineaBombo);
+
+            bomboAmericano.getBolas().add(numeroBombo);
+
+        }
+
+        return bomboAmericano;
+
+    }
   
 
 }
