@@ -37,6 +37,7 @@ public class JuegoBingo {
                 switch (opcionPartida) {
                     case 1:
 
+                        teclado.nextLine();
                         System.out.println("Escribe la ID de la partida: ");
                         String partida = teclado.nextLine();
 
@@ -162,7 +163,7 @@ public class JuegoBingo {
         } while (opcion == 1);
 
         if (opcion == 2) {
-            //guardarPartida(bingoAmericano);
+            guardarPartidaCargada(bingoAmericano);
         }
 
     }
@@ -186,7 +187,7 @@ public class JuegoBingo {
         String id = "";
         int parseID;
         for (BingoVO bingoVO : bingodao.getAll()) {
-            
+
             id = bingoVO.getId();
 
         }
@@ -206,6 +207,18 @@ public class JuegoBingo {
         BingoDAO bingoDAO = new BingoDAO();
 
         bingoDAO.insertBingo(bingoVO);
+
+    }
+
+    
+    // Metodo que recibe como parametro un bingoAmericano
+    // tendremos que crear un bingoDAO y llamar al metodo updateBingo creado anteriormente
+    public static void guardarPartidaCargada(BingoAmericano bingo) {
+        BingoVO bingoVO = new BingoVO(bingo.getId(), bingo.getFecha(), bingo.getIdJugador(), 1, bingo.getBombo().toString(), bingo.getCarton().mostrarCartonEnLinea());
+
+        BingoDAO bingoDAO = new BingoDAO();
+
+        bingoDAO.updateBingo(bingo.getId(), bingoVO);
 
     }
 
