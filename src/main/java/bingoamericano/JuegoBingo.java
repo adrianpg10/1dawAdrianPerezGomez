@@ -40,14 +40,14 @@ public class JuegoBingo {
                         System.out.println("Escribe la ID de la partida: ");
                         String partida = teclado.nextLine();
 
-                        //cargarPartidaBingoAmericano(cargarPartida(partida));
+                        cargarPartidaBingoAmericano(cargarPartida(partida));
 
                         break;
                     case 2:
 
                         teclado.nextLine();
 
-                        BingoAmericano bingoAmericano = new BingoAmericano(new CartonAmericano(), new BomboAmericano(),generarID(), LocalDate.now(), EleccionNombreJugador());
+                        BingoAmericano bingoAmericano = new BingoAmericano(new CartonAmericano(), new BomboAmericano(), generarID(), LocalDate.now(), EleccionNombreJugador());
                         bingoAmericano.getBombo().llenarBombo();
                         bingoAmericano.getCarton().generarCarton();
 
@@ -56,7 +56,7 @@ public class JuegoBingo {
                         break;
 
                 }
-
+                break;
             case 2:
 
                 System.out.println("....");
@@ -207,9 +207,7 @@ public class JuegoBingo {
         bingoDAO.insertBingo(bingoVO);
 
     }
-    
-    
-     
+
     //Metodo privado en el que tendremos que pasarle el bombo en un String.
     // Separamos por coma y le añadimos el numero del bombo recorriendo los tokens al bomboAmericano
     // y lo devolvemos
@@ -234,8 +232,8 @@ public class JuegoBingo {
         return bomboAmericano;
 
     }
-  
-       //Metodo privado en el que tendremos que pasarle el carton en un String
+
+    //Metodo privado en el que tendremos que pasarle el carton en un String
     // Separamos por "," y con el contador sumamos las casillas para que nos vaya recorriendo el numero del carton
     // al final tendremos que devolver un cartonAmericano
     private static CartonAmericano leerCartonAmericano(String lineaCarton) {
@@ -260,8 +258,8 @@ public class JuegoBingo {
         return cartonAmericano;
 
     }
-    
-      //Metodo cargar partida, donde le pasaremos por parametro la id
+
+    //Metodo cargar partida, donde le pasaremos por parametro la id
     // para que nos recorra la fila, una vez recorrida la fila, tendremos que añadir los atributos al objeto bingoAmericano
     public static BingoAmericano cargarPartida(String id) {
         BingoAmericano bingoAmericano = null;
